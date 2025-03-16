@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arbetsprov-app
+spec:
+  template:
+    spec:
+      containers:
+        - name: arbetsprov-app
+          image: arbetsprov.registry.se/arbetsprov-app:0.0.2  
+          env:
+            - name: quarkus.log.level
+              value: "INFO"  
