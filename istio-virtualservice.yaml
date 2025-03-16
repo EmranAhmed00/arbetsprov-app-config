@@ -5,20 +5,33 @@ metadata:
   namespace: digg-arbetsprov-prod
 spec:
   hosts:
-    - "*"  
+    - "*"
   gateways:
-    - app-gateway  
+    - app-gateway
   http:
+    
     - match:
         - uri:
-            prefix: "/api"
+            prefix: "/api/v2"  
       route:
         - destination:
-            host: your-new-app-service  
+            host: new-version-service  
             port:
-              number: 8080  
+              number: 8080
+
+   
+    - match:
+        - uri:
+            prefix: "/api"  
+      route:
+        - destination:
+            host: new-app-service  
+            port:
+              number: 8080
+
+    
     - route:
         - destination:
-            host: arbetsprov-app  
+            host: arbeidsprov-app  
             port:
-              number: 8080  
+              number: 8080
